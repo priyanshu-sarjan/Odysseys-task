@@ -1,32 +1,55 @@
-body { margin: 0; background-color: #000; color: white; font-family: 'Inter', sans-serif; }
+:root {
+  --sunlight: #4facfe;
+  --twilight: #003366;
+  --midnight: #001a33;
+  --abyss: #000a1a;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  overflow-x: hidden;
+  background-color: var(--sunlight);
+}
+
+.container {
+  transition: background-color 0.5s ease;
+}
 
 .section {
   height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  padding: 0 10%;
   text-align: center;
-  padding: 20px;
 }
 
-/* Background Gradients simulating depth  */
-.hero { background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%); }
-.twilight { background: linear-gradient(to bottom, #00f2fe 0%, #003366 100%); }
-.midnight { background: linear-gradient(to bottom, #003366 0%, #001a33 100%); }
-.abyss { background: linear-gradient(to bottom, #001a33 0%, #000a1a 100%); }
-.trench { background: #000; }
-
-.content h2 { font-size: 3rem; margin-bottom: 1rem; }
-
-/* Interactive Hover Element [cite: 22] */
-.interactive-card {
-  padding: 20px;
-  border: 2px solid white;
-  margin-top: 20px;
-  transition: transform 0.3s ease, background 0.3s ease;
-  cursor: pointer;
-}
-.interactive-card:hover {
-  transform: scale(1.1);
+/* Interactive Elements (Requirement 3) */
+.interactive-card, .biolum-trigger {
+  margin-top: 2rem;
+  padding: 15px 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease; /* Animation 2: Hover Transition */
+}
+
+.interactive-card:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
+}
+
+h1, h2 {
+  font-size: clamp(2rem, 8vw, 5rem);
+  text-transform: uppercase;
+  letter-spacing: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section { padding: 0 5%; }
+  p { font-size: 1rem; }
 }
