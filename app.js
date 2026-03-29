@@ -10,10 +10,10 @@ function App() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Hero Reveal Animation [cite: 23]
+      // 1. Initial Hero Fade-in (Animation 1)
       gsap.from(".hero-content", { opacity: 0, y: 50, duration: 1.5 });
 
-      // 2. Parallax & Scroll Animations 
+      // 2. Parallax and Reveal Effects (Scroll Interaction)
       const sections = gsap.utils.toArray('.section');
       sections.forEach((section) => {
         gsap.from(section.querySelector('.content'), {
@@ -23,9 +23,21 @@ function App() {
             toggleActions: "play none none reverse"
           },
           opacity: 0,
-          y: 100,
-          duration: 1
+          y: 60,
+          duration: 1.2,
+          ease: "power2.out"
         });
+      });
+
+      // 3. Background Color Transition (Depth Animation)
+      gsap.to(".container", {
+        scrollTrigger: {
+          trigger: ".container",
+          start: "top top",
+          end: "bottom bottom",
+          scrub: true
+        },
+        backgroundColor: "#00050a" // Deepest black at the bottom
       });
     }, mainRef);
     return () => ctx.revert();
@@ -33,44 +45,45 @@ function App() {
 
   return (
     <main ref={mainRef} className="container">
-      {/* SECTION 1: HERO (Sunlight Zone)  */}
-      <section className="section hero">
+      {/* SECTION 1: HERO (Sunlight Zone) */}
+      <section className="section sunlight">
         <div className="hero-content">
-          <h1>Ocean Depths</h1>
-          <p>Scroll down to begin your descent into the blue.</p>
+          <h1 className="glitch">0m: Sunlight Zone</h1>
+          <p>The journey into the abyss begins here.</p>
         </div>
       </section>
 
-      {/* SECTION 2: THE TWILIGHT ZONE  */}
+      {/* SECTION 2: INTRODUCTION (Twilight Zone) */}
       <section className="section twilight">
         <div className="content">
-          <h2>The Twilight Zone</h2>
-          <p>At 200m, sunlight begins to fade. Strange creatures start to appear.</p>
-          <div className="interactive-card">Hover to Explore [cite: 22]</div>
+          <h2>200m: The Twilight Zone</h2>
+          <p>Light begins to fail. Photosynthesis is no longer possible.</p>
+          <div className="interactive-card">Explore Marine Snow</div>
         </div>
       </section>
 
-      {/* SECTION 3: THE MIDNIGHT ZONE  */}
+      {/* SECTION 3: EXPLORATION (Midnight Zone) */}
       <section className="section midnight">
         <div className="content">
-          <h2>The Midnight Zone</h2>
-          <p>1,000m deep. The only light here comes from bioluminescence.</p>
+          <h2>1,000m: The Midnight Zone</h2>
+          <p>The only light here is produced by the creatures themselves.</p>
+          <div className="biolum-trigger">Activate Bioluminescence</div>
         </div>
       </section>
 
-      {/* SECTION 4: THE ABYSS  */}
+      {/* SECTION 4: INSIGHT (The Abyss) */}
       <section className="section abyss">
         <div className="content">
-          <h2>The Abyss</h2>
-          <p>4,000m deep. The water is near freezing and the pressure is crushing.</p>
+          <h2>4,000m: The Abyssal Zone</h2>
+          <p>Freezing temperatures and immense pressure define this realm.</p>
         </div>
       </section>
 
-      {/* SECTION 5: THE TRENCH (Conclusion)  */}
+      {/* SECTION 5: CONCLUSION (The Trench) */}
       <section className="section trench">
         <div className="content">
-          <h2>The Challenger Deep</h2>
-          <p>You have reached the bottom. The story ends in the dark.</p>
+          <h2>11,000m: The Hadal Zone</h2>
+          <p>You have reached the Challenger Deep. Silence reigns.</p>
         </div>
       </section>
     </main>
