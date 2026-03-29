@@ -1,0 +1,32 @@
+body { margin: 0; background-color: #000; color: white; font-family: 'Inter', sans-serif; }
+
+.section {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Background Gradients simulating depth  */
+.hero { background: linear-gradient(to bottom, #4facfe 0%, #00f2fe 100%); }
+.twilight { background: linear-gradient(to bottom, #00f2fe 0%, #003366 100%); }
+.midnight { background: linear-gradient(to bottom, #003366 0%, #001a33 100%); }
+.abyss { background: linear-gradient(to bottom, #001a33 0%, #000a1a 100%); }
+.trench { background: #000; }
+
+.content h2 { font-size: 3rem; margin-bottom: 1rem; }
+
+/* Interactive Hover Element [cite: 22] */
+.interactive-card {
+  padding: 20px;
+  border: 2px solid white;
+  margin-top: 20px;
+  transition: transform 0.3s ease, background 0.3s ease;
+  cursor: pointer;
+}
+.interactive-card:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.1);
+}
